@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block body%} 
+<h2>Searching Infor. </h2>
+<div>
+    {% if messages %}
+        <ul class="messages">
+            {% for k in messages %}
+            <li style="color:red" >{{ k }}</li>
+             {% endfor %}
+        </ul>
+    {% endif %}
+</div><br>
+
+<div style="color:rgb(3, 3, 3)">
+    {% if sr %}
+    <table class="table table-striped table-bordered table-sm">  
+        <thead class="thead-dark">  
+        <tr>  
+            <th id="thh">Employee ID</th>  
+            <th id="thh">Employee Name</th>  
+            <th id="thh">Employee Email</th>  
+            <th id="thh">Employee Contact</th>  
+            <th id="thh">Actions</th>
+            <th id="thh">Created</th>  
+        </tr>  
+        </thead>  
+        <tbody>  
+        {% for k in sr %}
+        <tr>  
+            <td>{{ k.eid }}</td>  
+            <td>{{ k.ename }}</td>  
+            <td>{{ k.eemail }}</td>  
+            <td>{{ k.econtact }}</td>  
+            <td id="ap">  
+                <a href="/edit/{{ k.id }}/" class="btn btn-primary"><span class="glyphicon glyphicon-pencil" ></span><p>Edit</p></a>  
+                <a href="/delete/{{ k.id }}/" class="btn btn-warning"><span class="glyphicon glyphicon-remove"></span><p>Delete</p></a>  
+            </td>
+            <td>{{ k.created_at }}</td>  
+        </tr>  
+        {% endfor %}
+    {% endif %}  
+</tbody>  
+</table> 
+
+</div>
+
+{% endblock%}

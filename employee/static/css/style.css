@@ -21,7 +21,7 @@ table
 		}
 		#thh
 		{
-			border-top: 5px solid deepskyblue;
+			border-top: 5px solid rgb(22, 25, 26);
 			box-shadow: 10px 10px 15px gray;
 		}
 	    th, td
@@ -45,3 +45,13 @@ table
 			transition: 600ms;
 			box-shadow: 10px 10px 15px gray;
 		}
+a p{
+	font-size: 35 px;
+	float: right;
+	text-align: center;
+}
+a span{
+	margin-right: 5px;
+	margin-top: 3px;
+	text-align: center;
+}
