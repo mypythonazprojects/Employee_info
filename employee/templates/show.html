@@ -1,23 +1,14 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-    <meta charset="UTF-8">  
-    <title>Employee Records</title>  
-     {% load staticfiles %}  
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />  
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-</head>  
-<body>  
+{% extends 'base.html' %}
+{% block body%} 
 <table class="table table-striped table-bordered table-sm">  
     <thead class="thead-dark">  
     <tr>  
-        <th>Employee ID</th>  
-        <th>Employee Name</th>  
-        <th>Employee Email</th>  
-        <th>Employee Contact</th>  
-        <th>Actions</th>  
+        <th id="thh">Employee ID</th>  
+        <th id="thh">Employee Name</th>  
+        <th id="thh">Employee Email</th>  
+        <th id="thh">Employee Contact</th>  
+        <th id="thh">Actions</th>
+        <th id="thh">Created</th>  
     </tr>  
     </thead>  
     <tbody>  
@@ -30,7 +21,8 @@
         <td>  
             <a href="/edit/{{ employee.id }}/" class="btn btn-primary"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
             <a href="/delete/{{ employee.id }}/" class="btn btn-warning">Delete</a>  
-        </td>  
+        </td>
+        <td>{{ employee.created_at }}</td>  
     </tr>  
 {% endfor %}  
     </tbody>  
@@ -38,5 +30,4 @@
 <br>  
 <br>  
 <center><a href="/emp" class="btn btn-primary">Add New Record</a></center>  
-</body>  
-</html>  
+{% endblock%}
