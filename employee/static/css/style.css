@@ -2,9 +2,7 @@
 table
 {
 
-	margin-right: 0.5%;
-	margin-left: 5%;
- 	margin-top: 3%;
+	margin-top: 2%;
 	/*box-shadow: 10px 10px 100px blue;*/
 }
 th
@@ -51,4 +49,14 @@ text-align: center;
 }
 body{
 background: #fff;
+}
+#sel
+{
+	width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }

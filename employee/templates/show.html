@@ -6,7 +6,8 @@
         <th id="thh">Employee ID</th>  
         <th id="thh">Employee Name</th>  
         <th id="thh">Employee Email</th>  
-        <th id="thh">Employee Contact</th>  
+        <th id="thh">Employee Contact</th>
+        <th id="thh">Category</th>  
         <th id="thh">Actions</th>
         <th id="thh">Created</th>  
     </tr>  
@@ -17,12 +18,14 @@
         <td>{{ employee.eid }}</td>  
         <td>{{ employee.ename }}</td>  
         <td>{{ employee.eemail }}</td>  
-        <td>{{ employee.econtact }}</td>  
+        <td>{{ employee.econtact }}</td>
+        <td>{{ employee.ecat }}</td>  
         <td id="ap">  
             <a href="/edit/{{ employee.id }}/" class="btn btn-primary"><span class="glyphicon glyphicon-pencil" ></span><p>Edit</p></a>  
             <a href="/delete/{{ employee.id }}/" class="btn btn-warning"><span class="glyphicon glyphicon-remove"></span><p>Delete</p></a>  
         </td>
-        <td>{{ employee.created_at }}</td>  
+        <td>{{ employee.created_at }}</td>
+        <td>{{diff}}</td>  
     </tr>  
 {% endfor %}  
     </tbody>  
