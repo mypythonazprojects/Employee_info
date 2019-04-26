@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect  
 from employee.forms import EmployeeForm  
+from employee.forms import DatetestForm
 from employee.models import Employee 
 from django.db.models import Q 
 from django.contrib import messages
 from django.http import *
 from django.core.exceptions import ObjectDoesNotExist
 import datetime
+from datetime import date
 from datetime import timedelta
 def emp(request):  
     if request.method == "POST":  
@@ -19,19 +21,32 @@ def emp(request):
     else:
         form = EmployeeForm()  
     return render(request,'index.html',{'form':form})
+    
+def sorting(request):
+    employees = Employee.objects.order_by('created_at')
+    context={
+        'employeesd':employees
+    }
+    return render(request,"show.html",context)
 
 def show(request):  
      #date2 = '2019-03-10 09:56:28.067'
-    employees = Employee.objects.all() 
-    field_name = 'created_at'
-    obj = Employee.objects.first()
-    field_value = getattr(obj, field_name)
-    datetimeFormat = '%Y-%m-%d %H:%M:%S.%f'
-    date1 = str(datetime.datetime.now())
-    date2= str(field_value)
-    diff = datetime.datetime.strptime(date1, datetimeFormat) - datetime.datetime.strptime(date2[0:25], datetimeFormat)
+    employees = Employee.objects.order_by('created_at').reverse()   #created_at desc order  #reverse() for implied the Asc
+    #employees=Employee.objects.filter(created_at__lte=datetime.datetime.today())
+    #employees=Employee.objects.filter(created_at__minute__gte=datetime.datetime.today().minute)
+    #employees = Employee.objects.exclude(created_at__gt=datetime.datetime(2019, 4, 20,00,00,00))
+    #field_name = 'created_at'
+    #obj = Employee.objects.first()
+    #field_value = getattr(obj, field_name)
+    #datetimeFormat = '%Y-%m-%d %H:%M:%S.%f'
+    #date1 = datetime.datetime.now()
+    #date2= str(field_value)
+    #diff = datetime.datetime.strptime(date1, datetimeFormat) - datetime.datetime.strptime(date2[0:25], datetimeFormat)
+    date1=datetime.datetime.now()
+    date2=datetime.timedelta(minutes=1)
     context={
-        'diff': diff,
+        'date1': date1,
+        'date2':date2,
         'employees':employees
     }
     return render(request,"show.html",context)
@@ -75,3 +90,16 @@ def search(request):
         else:
             return HttpResponseRedirect('/search/')
     return render(request, 'search.html')
+
+def datetest(request):
+    if request.method == "POST":  
+        form = DatetestForm(request.POST)  
+        if form.is_valid():  
+            try:
+                form.save()
+                return redirect('/show')
+            except:
+                pass  
+    else:
+        form = DatetestForm()  
+    return render(request,'datetesting.html',{'form':form})

@@ -2,6 +2,8 @@
 
 from django.db import migrations, models
 import django.utils.timezone
+from django.utils import timezone
+import datetime
 
 
 class Migration(migrations.Migration):
@@ -14,7 +16,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='employee',
             name='created_at',
-            field=models.DateField(auto_now_add=True, default=django.utils.timezone.now),
+            field=models.DateField(auto_now_add=True, default='2019-04-04 06:00:00.000000-08:00'), #remove previous not worked migration and add this string in datetime field, works for me
             preserve_default=False,
         ),
     ]

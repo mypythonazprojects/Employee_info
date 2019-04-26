@@ -1,20 +1,28 @@
 {% extends 'base.html' %}
 {% block body%} 
+<select class="browser-default custom-select">
+    <option selected>Filtering</option>
+    <option value={{ employeesd }}>Descending</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+</select>
 <table>  
     <thead>  
     <tr>  
-        <th id="thh">Employee ID</th>  
-        <th id="thh">Employee Name</th>  
-        <th id="thh">Employee Email</th>  
-        <th id="thh">Employee Contact</th>
-        <th id="thh">Category</th>  
-        <th id="thh">Actions</th>
-        <th id="thh">Created</th>  
+        <th id="thh" style="top:55px; position:sticky;z-index: 1;">Employee ID</th>  
+        <th id="thh" style="top:55px; position:sticky;z-index: 1;">Employee Name</th>  
+        <th id="thh" style="top:55px; position:sticky;z-index: 1;">Employee Email</th>  
+        <th id="thh" style="top:55px; position:sticky;z-index: 1;">Employee Contact</th>
+        <th id="thh" style="top:55px; position:sticky;z-index: 1;">Category</th>  
+        <th id="thh" style="top:55px; position:sticky;z-index: 1;">Actions</th>
+        <th id="thh" style="top:55px; position:sticky;z-index: 1;">Created</th>
+        <th id="thh" style="top:55px; position:sticky;z-index: 1;">ago</th>  
+
     </tr>  
     </thead>  
     <tbody>  
 {% for employee in employees %}  
-    <tr>  
+    <tr style="z-index:0;">  
         <td>{{ employee.eid }}</td>  
         <td>{{ employee.ename }}</td>  
         <td>{{ employee.eemail }}</td>  
@@ -25,7 +33,8 @@
             <a href="/delete/{{ employee.id }}/" class="btn btn-warning"><span class="glyphicon glyphicon-remove"></span><p>Delete</p></a>  
         </td>
         <td>{{ employee.created_at }}</td>
-        <td>{{diff}}</td>  
+        <td>{{ employee.created_at|timesince }}</td>
+        <!--<td>{{ employee.created_at|timeuntil }}</td>-->  
     </tr>  
 {% endfor %}  
     </tbody>  

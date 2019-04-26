@@ -8,5 +8,6 @@ urlpatterns = [
     path('edit/<int:id>/', views.edit, name="edit"),  
     path('update/<int:id>/', views.update, name="update"),  
     path('delete/<int:id>/', views.destroy, name="delete"),
-    path('search/', views.search, name="search"),  
+    path('search/', views.search, name="search"),
+    path('datetest/', views.datetest, name="datetesting"),  
 ]  

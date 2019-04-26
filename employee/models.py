@@ -5,7 +5,7 @@ class Employee(models.Model):
     eemail = models.EmailField()  
     econtact = models.CharField(max_length=15)
     ecat = models.CharField(max_length=30, blank=True)
-    created_at= models.DateTimeField(auto_now_add=True)  
+    created_at= models.DateTimeField(auto_now_add=True) 
     class Meta:  
         db_table = "employee"  
     def __str__(self):
@@ -16,3 +16,9 @@ class Cat(models.Model):
         db_table = "cat"  
     def __str__(self):
         return self.caty
+class Datetest(models.Model):
+    tdate=models.DateField(blank=True)
+    class Meta:  
+        db_table = "datetest"  
+    def __str__(self):
+        return self.tdate
