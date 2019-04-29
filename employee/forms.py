@@ -27,7 +27,8 @@ class DatetestForm(forms.ModelForm):
     #tdate=forms.DateField(widget = forms.SelectDateWidget)
     #cur_year = datetime.datetime.today().year
     #year_range = tuple([i for i in range(cur_year - 2, cur_year + 2)])
-    tdate = forms.DateField(initial=datetime.date.today() ,widget=forms.SelectDateWidget(attrs={'class': 'form-control snps-inline-select'}))
+    #tdate = forms.DateField(initial=datetime.date.today() ,widget=forms.SelectDateWidget(attrs={'class': 'form-control snps-inline-select'}))
+    tdate=forms.DateField(initial=datetime.date.today(), widget=forms.DateInput(attrs={'id': 'datespan'}))
     class Meta:
         model=Datetest
         fields = "__all__"

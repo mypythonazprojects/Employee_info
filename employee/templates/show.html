@@ -41,4 +41,24 @@
 </table>  
 <br>   
 <center><a href="/emp" class="btn btn-primary">Add New Record</a></center>  
+
+<table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Timesince</th>
+        <th scope="col">Timeuntil</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for datetest in datetest %}
+      <tr>
+        <td>{{ datetest.tdate }}</td>
+        <td>{{ datetest.tdate|timesince }} , <a style="color:rgb(7, 110, 29);">ago</a></td>    
+        <td>{{ datetest.tdate|timeuntil }} , <a style="color:crimson;">remaining</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
 {% endblock%}
