@@ -48,7 +48,8 @@ def sorting(request):
 def show(request):  
      #date2 = '2019-03-10 09:56:28.067'
     employees = Employee.objects.order_by('created_at').reverse()   #created_at desc order  #reverse() for implied the Asc
-    datetest = Datetest.objects.filter(tdate__lte=datetime.date.today())
+    datetest1 = Datetest.objects.filter(tdate__gte=datetime.date.today())    
+    datetest2 = Datetest.objects.filter(tdate__lte=datetime.date.today())
     #employees=Employee.objects.filter(created_at__lte=datetime.datetime.today())
     #employees=Employee.objects.filter(created_at__minute__gte=datetime.datetime.today().minute)
     #employees = Employee.objects.exclude(created_at__gt=datetime.datetime(2019, 4, 20,00,00,00))
@@ -65,7 +66,8 @@ def show(request):
         'date1': date1,
         'date2':date2,
         'employees':employees,
-        'datetest':datetest
+        'datetest1':datetest1,
+        'datetest2':datetest2
     }
     return render(request,"show.html",context)
 
