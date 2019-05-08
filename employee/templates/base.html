@@ -12,6 +12,8 @@
         <link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap-select.css' %}" /> 
         <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" /> 
         <script  type="text/javascript" src="{% static 'src/CibulCalendar.js' %}"></script>
+        <script  type="text/javascript" src="{% static 'js/jquery-3.4.0.min.js' %}"></script>
+
         <style type="text/css">
 
           body { text-align: center; font-family: 'Arial',Tahoma,Helvetica,Sans-Serif;}
@@ -46,7 +48,11 @@
             setCibulCalendar( 'datespan' );
     
           }
-    
+          $(document).ready(function(){
+            $(".sar").click(function(){
+            $(".sar").hide();
+          });
+        });
         </script>   
       </head> 
 <body onload="onload()">

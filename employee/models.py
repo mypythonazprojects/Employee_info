@@ -1,4 +1,5 @@
 from django.db import models  
+import datetime
 class Employee(models.Model):  
     eid = models.CharField(max_length=20)  
     ename = models.CharField(max_length=100)  
@@ -22,3 +23,10 @@ class Datetest(models.Model):
         db_table = "datetest"  
     def __str__(self):
         return self.tdate
+
+    @property
+    def date_diff(self):
+        return -(self.tdate - datetime.date.today()).days*10
+    #How to calculate number of days, when two DateFields are given? Django
+    #that works for me
+    #In template, write : {{datetest.date_diff}}

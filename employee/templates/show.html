@@ -21,7 +21,8 @@
     </tr>  
     </thead>  
     <tbody>  
-{% for employee in employees %}  
+{% for employee in employees %} 
+ 
     <tr style="z-index:0;">  
         <td>{{ employee.eid }}</td>  
         <td>{{ employee.ename }}</td>  
@@ -34,7 +35,8 @@
         </td>
         <td>{{ employee.created_at }}</td>
         <td>{{ employee.created_at|timesince }}</td>
-        <!--<td>{{ employee.created_at|timeuntil }}</td>-->  
+        <!--<td>{{ employee.created_at|timesince|add:"2" }}</td>-->
+        <!--<td>{{ employee.created_at|timeuntil }}</td>--> 
     </tr>  
 {% endfor %}  
     </tbody>  
@@ -48,6 +50,7 @@
         <th scope="col">Date</th>
         <th scope="col">Timesince</th>
         <th scope="col">Timeuntil</th>
+        <th scope="col">Fine</th>
       </tr>
     </thead>
     <tbody>
@@ -56,6 +59,7 @@
         <td>{{ datetest.tdate }}</td>
         <td>{{ datetest.tdate|timesince }} , <a style="color:rgb(7, 110, 29);">ago</a></td>    
         <td>{{ datetest.tdate|timeuntil }} , <a style="color:crimson;">remaining</a></td>
+        <td>{{ datetest.date_diff }} <a style="color:rgb(112, 5, 26);">tk</a></td>
       </tr>
       {% endfor %}
     </tbody>

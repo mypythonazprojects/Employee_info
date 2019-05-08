@@ -10,6 +10,21 @@ from django.core.exceptions import ObjectDoesNotExist
 import datetime
 from datetime import date
 from datetime import timedelta
+from django import template
+register = template.Library()
+@register.filter
+def div( value, arg ):
+    '''
+    Divides the value; argument is the divisor.
+    Returns empty string on any error.
+    '''
+    try:
+        value = int( value )
+        arg = int( arg )
+        if arg: return value / arg
+    except: pass
+    return ''
+
 def emp(request):  
     if request.method == "POST":  
         form = EmployeeForm(request.POST)  
@@ -33,7 +48,7 @@ def sorting(request):
 def show(request):  
      #date2 = '2019-03-10 09:56:28.067'
     employees = Employee.objects.order_by('created_at').reverse()   #created_at desc order  #reverse() for implied the Asc
-    datetest = Datetest.objects.all()
+    datetest = Datetest.objects.filter(tdate__lte=datetime.date.today())
     #employees=Employee.objects.filter(created_at__lte=datetime.datetime.today())
     #employees=Employee.objects.filter(created_at__minute__gte=datetime.datetime.today().minute)
     #employees = Employee.objects.exclude(created_at__gt=datetime.datetime(2019, 4, 20,00,00,00))
