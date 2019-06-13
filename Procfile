@@ -1,1 +1,1 @@
-web: gunicorn employee.wsgi --log-file -
+web: gunicorn crudexample.wsgi --log-file -
