@@ -1,0 +1,1 @@
+web: gunicorn crudexample.wsgi --log-file -
