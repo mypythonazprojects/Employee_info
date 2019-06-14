@@ -10,6 +10,7 @@ gunicorn = "*"
 whitenoise = "*"
 django = "*"
 python = "*"
+pip = "*"
 
 [requires]
 python_version = "3.6"
