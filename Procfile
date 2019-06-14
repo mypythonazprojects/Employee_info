@@ -1,1 +1,1 @@
-web: gunicorn --chdir crudexample employee:app
+web: gunicorn --chdir src crudexample.wsgi --log-file -
